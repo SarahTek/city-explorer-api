@@ -40,7 +40,7 @@ class Forecast {
     this.list = Forecast.weather.find(listObj => listObj.city_name === type);
     this.arr = this.list.data.map(banana => ({
       description: `${banana.low_temp} ${banana.max_temp} ${banana.weather.description}`,
-      Date: `${banana.datetime}`
+      date: `${banana.datetime}`
     }));
 
   }
