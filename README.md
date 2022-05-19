@@ -22,12 +22,15 @@
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 
 
-Name of feature: ________________________________
+Name of feature: city-explorer-api
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 4
 
-Start time: _____
+Start time: 0700
 
-Finish time: _____
+Finish time: 1100
 
-Actual time needed to complete: _____
+Actual time needed to complete: 4
+
+
+![WRRC](WRRC.png)
