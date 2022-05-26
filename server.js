@@ -29,9 +29,12 @@ app.get('/', (request, response) => {
   response.send('Testing from home route');
 });
 
+
 app.get('/weather', reqWeather);
 app.get('/movies', reqMovies);
 app.use('*', error);
+
+
 
 
 // this turns the server on to the port that you specifed in your .env file
