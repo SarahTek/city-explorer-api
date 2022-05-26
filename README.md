@@ -1,7 +1,7 @@
 # city-explorer-api
 
 
-**Author**: Your Name Goes Here
+**Author**: Sarah Teklemariam
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
@@ -19,18 +19,19 @@
 01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
 
 ## Credit and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+- Luis Sandoval
+- Martha Quintanilla Ramirez
 
 
 Name of feature: city-explorer-api
 
-Estimate of time needed to complete: 4
+Estimate of time needed to complete: 2.5 hours
 
-Start time: 0700
+Start time: 03:00
 
-Finish time: 1100
+Finish time: 05:30
 
 Actual time needed to complete: 4
 
 
-![WRRC](WRRC.png)
+![WRRC](Lab9WRRC.jpeg)
