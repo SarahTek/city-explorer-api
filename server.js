@@ -15,16 +15,16 @@ app.get('/', (request, response) => {
 app.get('/weather', async (request, response) => {
   getWeather(request)
     .then(weatherPromise => response.status(200).send(weatherPromise))
-    .catch(error => response.status(500).send('weather not found on the city you searched for' + error));
+    .catch(error => response.status(500).send(error));
 });
 
 app.get('/movies', async (request, response) => {
   getMovies(request.query.searchQuery)
     .then(moviesPromise => response.status(200).send(moviesPromise))
-    .catch(error => response.status(500).send('movies were not found on the city you searched for' + error));
+    .catch(error => response.status(500).send(error));
 });
 
 // const error = require('./error');
-app.use('*', (request, response) => response.status(404).send('that end poind does not exixst'));
+app.use('*', (request, response) => response.status(404).send('that end point does not exixst'));
 
 app.listen(PORT, () => console.log(`listening on ${PORT}`));
