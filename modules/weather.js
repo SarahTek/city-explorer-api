@@ -5,10 +5,10 @@ const axios = require('axios');
 async function getWeather(request) {
   const { lat, lon } = request.query;
   try {
-    const weatherUrl = `http://api.weatherbit.io/v2.0/forecast/daily?key=${process.env.WEATHER_API_KEY}&lat=${lat}&lon=${lon}&days=7`;
-    const weatherResponse = await axios.get(weatherUrl);
-    const weatherResults = weatherResponse.data.data.map(day => new Forecast(day));
-    return Promise.resolve(weatherResults);
+    const url = `http://api.weatherbit.io/v2.0/forecast/daily?key=${process.env.WEATHER_API_KEY}&lat=${lat}&lon=${lon}&days=7`;
+    const weatherData = await axios.get(url);
+    const weatherArray = weatherData.data.data.map(day => new Forecast(day));
+    return Promise.resolve(weatherArray);
   } catch (error) {
     console.error(error);
     return Promise.reject(error);

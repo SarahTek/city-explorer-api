@@ -4,16 +4,16 @@ const axios = require('axios');
 
 async function getMovies(searchQuery) {
   try {
-    const movieUrl = `https://api.themoviedb.org/3/movie?api_key=${process.env.MOVIE_API_KEY}&query=${searchQuery}`;
-    const movieResponse =  await axios.get(movieUrl);
-    const movieResult = movieResponse.data.results.map(movie => new Movie(movie));
-    return Promise.resolve(movieResult);
+    const url = `https://api.themoviedb.org/3/movie?api_key=${process.env.MOVIE_API_KEY}&query=${searchQuery}`;
+    const moviesData =  await axios.get(url);
+    const moviesArray = moviesData.data.results.map(movie => new Movies(movie));
+    return Promise.resolve(moviesArray);
   } catch (error) {
     console.error(error);
     return Promise.reject(error);
   }
 }
-class Movie {
+class Movies {
   constructor(movie) {
     this.title = movie.title;
     this.description = movie.overview;
