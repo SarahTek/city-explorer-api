@@ -1,18 +1,36 @@
 'use strict';
 
 const axios = require('axios');
+let cache = require('./cache.js');
 
-async function getMovies(searchQuery) {
+function getMovies(searchQuery) {
+  const key = 'movies-' + searchQuery;
+  const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_API_KEY}&query=${searchQuery}`;
+
+
+  if (cache[key]&& (Date.now() - cache[key].timestamp < 50000)) {
+    console.log('Cache hit', cache[key].timestamp);
+  } else {
+    console.log('Cache miss');
+    cache[key] = {};
+    cache[key].timestamp = Date.now();
+    cache[key].data = axios.get(url)
+      .then(response => dayMovies(response.data));
+  }
+  return cache[key].data;
+}
+
+function dayMovies(moviesData) {
   try {
-    const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_API_KEY}&query=${searchQuery}`;
-    const moviesData =  await axios.get(url);
-    const moviesArray = moviesData.data.results.map(movie => new Movies(movie));
-    return Promise.resolve(moviesArray);
-  } catch (error) {
-    console.error(error);
-    return Promise.reject(error);
+    const moviesSummaries = moviesData.results.map(movie => {
+      return new Movies(movie);
+    });
+    return Promise.resolve(moviesSummaries);
+  } catch (e) {
+    return Promise.reject(e);
   }
 }
+
 class Movies {
   constructor(movie) {
     this.title = movie.title;
